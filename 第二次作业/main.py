@@ -61,3 +61,10 @@ if __name__ == "__main__":
     tracemalloc.start()
 
     main(args)
+
+    # 获取内存分配的堆栈跟踪信息
+    snapshot = tracemalloc.take_snapshot()
+    top_stats = snapshot.statistics('lineno')
+    print("[ Top 10 ]")
+    for stat in top_stats[:10]:
+        print(stat)
